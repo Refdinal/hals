@@ -115,8 +115,12 @@ col2.metric("Jumlah Jiwa", jiwa)
 st.subheader("Jumlah Pemanfaat Berdasarkan Jorong")
 perjorong = df.groupby(by=["Jorong"]).count()[["Nama"]].sort_values(by="Nama")
 perjorong.rename(columns={"Nama": "Jumlah Pemanfaat"}, inplace=True)
-
-fig = px.bar(
-    perjorong, x="Jumlah Pemanfaat", y=perjorong.index, orientation="h", text_auto=True
-)
-st.plotly_chart(fig)
+with st.container():
+    fig = px.bar(
+        perjorong,
+        x="Jumlah Pemanfaat",
+        y=perjorong.index,
+        orientation="h",
+        text_auto=True,
+    )
+    st.plotly_chart(fig)
