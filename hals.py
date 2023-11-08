@@ -99,14 +99,22 @@ download2 = st.download_button(
 # download1 = st.download_button(
 #     label="Download data as CSV", data=csv, file_name="large_df.csv", mime="text/csv"
 # )
-
-location = df[["Nama", "Latitude", "Longitude"]]
+df["Google Map Link"] = (
+    "http://www.google.com/maps/place/"
+    + df["Latitude"].astype(str)
+    + ","
+    + df["Longitude"].astype(str)
+)
+location = df[["Nama", "Latitude", "Longitude", "Google Map Link"]]
 location_list = location.to_dict("records")
 locationx = location_list[0]
 map = folium.Map(location=[-0.3077269515839052, 100.01030796451599], zoom_start=12)
 for locationx in location_list:
     coords = (locationx["Latitude"], locationx["Longitude"])
-    folium.Marker(coords, popup=locationx["Nama"]).add_to(map)
+    link = locationx["Google Map Link"]
+    pop = "<a href=" + link + " target=”_blank”>" + locationx["Nama"] + "</a>"
+    folium.Marker(coords, popup=pop).add_to(map)
+
 st.title("Titik Lokasi Penerima Manfaat")
 st_data = st_folium(map, width=700, height=400)
 # download button 2 to download dataframe as xlsx
