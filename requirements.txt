@@ -9,3 +9,4 @@ openpyxl==3.1.2
 streamlit-folium==0.14.0
 folium==0.14.0
 XlsxWriter==3.1.9
+plotly-express==0.4.1
