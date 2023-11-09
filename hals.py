@@ -22,6 +22,7 @@ def load_data():
 
 xls = load_data()
 df = pd.read_excel(xls, "HALS", header=0)
+df = df.dropna()
 df = df.sort_values(
     by=["Nagari", "Jorong", "Alamat", "Nama"], ascending=[True, True, True, True]
 )
