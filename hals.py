@@ -33,7 +33,7 @@ Kecamatan = st.sidebar.multiselect(
     options=df["Kecamatan"].unique(),
     default=df["Kecamatan"].unique(),
 )
-df = df[df["Kecamatan"].isin(Kecamatam)]
+df = df[df["Kecamatan"].isin(Kecamatan)]
 Nagari = st.sidebar.multiselect(
     "Pilih Nama Nagari",
     options=df["Nagari"].unique(),
