@@ -16,14 +16,14 @@ def load_data():
     xls = pd.ExcelFile(
         f"https://docs.google.com/spreadsheets/d/1OPjDyMiXwA-uUWY6WLSxxNVvSdWHUzDODrDHSp3h8Lk/export?format=xlsx"
     )
-    xls = load_data()
+    
     df = pd.read_excel(xls, "HALS", header=0)
     df = df.dropna()
     df = df.sort_values(
         by=["Nagari", "Jorong", "Alamat", "Nama"], ascending=[True, True, True, True]
     )
     return df
-
+df = load_data()
 
 
 
